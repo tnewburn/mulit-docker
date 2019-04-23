@@ -5,24 +5,28 @@
       "name": "client", 
       "image": "tajn/multi-client",
       "hostname": "client",
+      "memory": 128,
       "essential": false
     },
     {
       "name": "server", 
       "image": "tajn/multi-server",
       "hostname": "api",
+      "memory": 128,
       "essential": false
     },
     {
       "name": "worker", 
       "image": "tajn/multi-worker",
       "hostname": "worker",
+      "memory": 128,
       "essential": false
     },
     {
       "name": "nginx", 
       "image": "tajn/multi-nginx",
       "hostname": "nginx",
+      "memory": 128,
       "essential": true,
       "portMappings": [
         {
