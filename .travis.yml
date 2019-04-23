@@ -21,3 +21,16 @@ after_success:
   - docker push tajn/multi-nginx
   - docker push tajn/multi-server
   - docker push tajn/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-west-2
+  app: multi-docker
+  env: MultiDocker-env
+  bucket_name: elasticbeanstalk-us-west-2-213239034368
+  bucket_path: mutli-docker
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
