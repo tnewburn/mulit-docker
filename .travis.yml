@@ -3,21 +3,21 @@ services:
   - docker
 
 before_install:
-  - docker build -t tnewburn/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t tajn/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run tnewburn/react-test npm test -- --coverage
+  - docker run tajn/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t tnewburn/multi-client ./client
-  - docker build -t tnewburn/multi-nginx ./nginx
-  - docker build -t tnewburn/multi-server ./server
-  - docker build -t tnewburn/multi-worker ./worker
+  - docker build -t tajn/multi-client ./client
+  - docker build -t tajn/multi-nginx ./nginx
+  - docker build -t tajn/multi-server ./server
+  - docker build -t tajn/multi-worker ./worker
 
   # Log in to docker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Push images to docker hub
-  - docker push tnewburn/multi-client
-  - docker push tnewburn/multi-nginx
-  - docker push tnewburn/multi-server
-  - docker push tnewburn/multi-worker
+  - docker push tajn/multi-client
+  - docker push tajn/multi-nginx
+  - docker push tajn/multi-server
+  - docker push tajn/multi-worker
