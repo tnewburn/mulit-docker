@@ -1,0 +1,36 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "client", 
+      "image": "tajn/multi-client",
+      "hostname": "client",
+      "essential": false
+    },
+    {
+      "name": "server", 
+      "image": "tajn/multi-server",
+      "hostname": "api",
+      "essential": false
+    },
+    {
+      "name": "worker", 
+      "image": "tajn/multi-worker",
+      "hostname": "worker",
+      "essential": false
+    },
+    {
+      "name": "nginx", 
+      "image": "tajn/multi-nginx",
+      "hostname": "nginx",
+      "essential": true,
+      "portMappings": [
+        {
+          "HostPort": 80,
+          "containerPort": 80 
+        } 
+      ],
+      "links": ["client", "server"]
+    }
+  ]
+}
